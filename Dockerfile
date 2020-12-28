@@ -16,6 +16,6 @@ RUN chmod +x /usr/local/bin/kubectl
 # install helm
 RUN curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
 
-COPY .bashrc /home/
+COPY github_latest_release.sh /usr/local/bin/github_latest_release
 
 CMD ["/bin/bash"]
