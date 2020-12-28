@@ -8,6 +8,9 @@ stages:
   - release
 
 variables:
+  # Use TLS https://docs.gitlab.com/ee/ci/docker/using_docker_build.html#tls-enabled
+  DOCKER_HOST: tcp://docker:2376
+  DOCKER_TLS_CERTDIR: "/certs"
   IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
   RELEASE_TAG: $CI_REGISTRY_IMAGE:latest
 
