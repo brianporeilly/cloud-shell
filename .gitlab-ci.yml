@@ -2,9 +2,6 @@ image: docker:19.03.12
 services:
   - docker:19.03.12-dind
 
-tags:
-  - docker
-
 stages:
   - build
   - test
@@ -27,12 +24,16 @@ build:
   script:
     - docker build --pull -t $IMAGE_TAG .
     - docker push $IMAGE_TAG
+  tags:
+    - docker
 
 test:
   stage: test
   script:
     - docker pull $IMAGE_TAG
     - docker run -v `pwd`:/code $IMAGE_TAG /code/test.sh
+  tags:
+    - docker
 
 release:
   stage: release
@@ -40,3 +41,5 @@ release:
     - docker pull $IMAGE_TAG
     - docker tag $IMAGE_TAG $RELEASE_TAG
     - docker push $RELEASE_TAG
+  tags:
+    - docker
