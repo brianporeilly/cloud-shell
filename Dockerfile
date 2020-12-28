@@ -3,6 +3,7 @@ FROM alpine:3
 RUN apk add --update-cache \
     bash \
     curl \
+    diffutils \
     openssl \
     && rm -rf /var/cache/apk/*
 
